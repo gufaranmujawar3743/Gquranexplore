@@ -3,56 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quran Explorer</title>
+    <title data-i18n="page_title">G Quran Explorer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        :root {
-            --bg-color-light: linear-gradient(to right, #e0f2f1, #b2dfdb);
-            --bg-color-dark: #2c3e50; /* Dark blue-grey */
-            --card-bg-light: #ffffff;
-            --card-bg-dark: #34495e; /* Darker blue-grey */
-            --navbar-bg-light: #004d40;
-            --navbar-bg-dark: #1a252f;
-            --text-color-light: #34495e;
-            --text-color-dark: #ecf0f1;
-            --header-bg-light: #00796b;
-            --header-bg-dark: #22303c;
-            --border-color-light: #b2dfdb;
-            --border-color-dark: #4a627d;
-            --arabic-box-bg-light: #f5f5f5;
-            --arabic-box-bg-dark: #283747;
-            --translation-box-bg-light: #e0f2f1;
-            --translation-box-bg-dark: #3a5068;
-            --copy-btn-bg-light: #00796b;
-            --copy-btn-bg-dark: #004d40;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg-color-light);
+            background: linear-gradient(to right, #e0f2f1, #b2dfdb); /* Light teal gradient */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            color: var(--text-color-light);
-            transition: background 0.3s ease, color 0.3s ease;
+            color: #34495e; /* Default text color */
         }
-        body.dark-mode {
-            background: var(--bg-color-dark);
-            color: var(--text-color-dark);
-        }
-
         .navbar {
-            background-color: var(--navbar-bg-light);
+            background-color: #004d40; /* Dark teal */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-bottom-left-radius: 15px;
             border-bottom-right-radius: 15px;
-            transition: background-color 0.3s ease;
-        }
-        body.dark-mode .navbar {
-            background-color: var(--navbar-bg-dark);
         }
         .navbar-brand {
             color: #e0f2f1 !important;
@@ -62,13 +31,6 @@
         }
         .navbar-brand i {
             margin-right: 10px;
-        }
-        .navbar-nav .nav-link {
-            color: #e0f2f1 !important;
-            margin-left: 15px;
-        }
-        .navbar-nav .nav-link:hover {
-            color: #a7ffeb !important;
         }
         .container-fluid {
             padding-top: 30px;
@@ -80,15 +42,10 @@
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             margin-bottom: 25px;
-            background-color: var(--card-bg-light);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        body.dark-mode .card {
-            background-color: var(--card-bg-dark);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background-color: #ffffff;
         }
         .card-header {
-            background-color: var(--header-bg-light);
+            background-color: #00796b; /* Medium teal */
             color: white;
             font-weight: 600;
             border-top-left-radius: 15px;
@@ -97,84 +54,37 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: background-color 0.3s ease;
-        }
-        body.dark-mode .card-header {
-            background-color: var(--header-bg-dark);
         }
         .card-header i {
             margin-right: 10px;
         }
         .form-label {
-            color: var(--text-color-light);
-            transition: color 0.3s ease;
-        }
-        body.dark-mode .form-label {
-            color: var(--text-color-dark);
+            color: #34495e;
         }
         .form-select {
             border-radius: 10px;
-            border: 1px solid var(--border-color-light);
+            border: 1px solid #b2dfdb;
             padding: 10px 15px;
             transition: all 0.3s ease;
-            background-color: var(--card-bg-light);
-            color: var(--text-color-light);
-        }
-        body.dark-mode .form-select {
-            border-color: var(--border-color-dark);
-            background-color: var(--card-bg-dark);
-            color: var(--text-color-dark);
+            background-color: #ffffff;
+            color: #34495e;
         }
         .form-select:focus {
-            border-color: var(--header-bg-light);
+            border-color: #00796b;
             box-shadow: 0 0 0 0.25rem rgba(0, 121, 107, 0.25);
         }
-        body.dark-mode .form-select:focus {
-            border-color: var(--header-bg-dark);
-            box-shadow: 0 0 0 0.25rem rgba(34, 48, 60, 0.25);
-        }
-
         .btn-primary {
-            background-color: var(--header-bg-light);
-            border-color: var(--header-bg-light);
+            background-color: #00796b;
+            border-color: #00796b;
             border-radius: 10px;
             padding: 10px 20px;
             font-weight: 600;
             transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
         }
         .btn-primary:hover {
-            background-color: var(--navbar-bg-light);
-            border-color: var(--navbar-bg-light);
+            background-color: #004d40;
+            border-color: #004d40;
             transform: translateY(-2px);
-        }
-        body.dark-mode .btn-primary {
-            background-color: var(--header-bg-dark);
-            border-color: var(--header-bg-dark);
-        }
-        body.dark-mode .btn-primary:hover {
-            background-color: var(--navbar-bg-dark);
-            border-color: var(--navbar-bg-dark);
-        }
-
-        .btn-icon {
-            background: none;
-            border: none;
-            color: var(--header-bg-light);
-            font-size: 1.2rem;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: color 0.2s ease;
-            padding: 0;
-            line-height: 1; /* Adjust for proper icon alignment */
-        }
-        .btn-icon:hover {
-            color: var(--navbar-bg-light);
-        }
-        body.dark-mode .btn-icon {
-            color: var(--text-color-dark);
-        }
-        body.dark-mode .btn-icon:hover {
-            color: var(--header-bg-dark);
         }
         .text-arabic {
             font-family: 'Amiri', serif;
@@ -183,42 +93,29 @@
             line-height: 2.5;
             direction: rtl;
             padding: 15px;
-            background-color: var(--arabic-box-bg-light);
+            background-color: #f5f5f5;
             border-radius: 10px;
             margin-bottom: 20px;
             box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-            transition: background-color 0.3s ease;
-            color: var(--text-color-light); /* Ensure text color is set */
-        }
-        body.dark-mode .text-arabic {
-            background-color: var(--arabic-box-bg-dark);
-            color: var(--text-color-dark);
+            color: #34495e;
         }
         .text-translation {
             font-size: 1.1rem;
             line-height: 1.8;
             padding: 15px;
-            background-color: var(--translation-box-bg-light);
+            background-color: #e0f2f1;
             border-radius: 10px;
             box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
-            transition: background-color 0.3s ease;
-            color: var(--text-color-light); /* Ensure text color is set */
-        }
-        body.dark-mode .text-translation {
-            background-color: var(--translation-box-bg-dark);
-            color: var(--text-color-dark);
+            color: #34495e;
         }
         .loading-spinner {
             display: none;
             text-align: center;
             margin-top: 30px;
-            color: var(--header-bg-light);
-        }
-        body.dark-mode .loading-spinner {
-            color: var(--text-color-dark);
+            color: #00796b;
         }
         .footer {
-            background-color: var(--navbar-bg-light);
+            background-color: #004d40;
             color: #e0f2f1;
             text-align: center;
             padding: 20px;
@@ -226,10 +123,6 @@
             border-top-right-radius: 15px;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
             margin-top: auto; /* Pushes footer to the bottom */
-            transition: background-color 0.3s ease;
-        }
-        body.dark-mode .footer {
-            background-color: var(--navbar-bg-dark);
         }
         .footer a {
             color: #e0f2f1;
@@ -247,11 +140,7 @@
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 15px;
-            color: var(--header-bg-light);
-            transition: color 0.3s ease;
-        }
-        body.dark-mode .translation-column h5 {
-            color: var(--text-color-dark);
+            color: #00796b;
         }
         .translation-box {
             min-height: 150px; /* Ensure boxes have some height */
@@ -259,88 +148,24 @@
             max-height: 400px; /* Limit height for long surahs */
             position: relative; /* For copy button positioning */
         }
-        .translation-box .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1rem;
-            color: var(--copy-btn-bg-light);
-            transition: color 0.2s ease;
-        }
-        .translation-box .copy-btn:hover {
-            color: var(--navbar-bg-light);
-        }
-        body.dark-mode .translation-box .copy-btn {
-            color: var(--copy-btn-bg-dark);
-        }
-        body.dark-mode .translation-box .copy-btn:hover {
-            color: var(--text-color-dark);
-        }
 
-        /* Bookmark list styling */
-        .bookmark-list-group-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--translation-box-bg-light);
-            border: 1px solid var(--border-color-light);
-            color: var(--text-color-light);
-            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-        }
-        .bookmark-list-group-item:hover {
-            background-color: var(--border-color-light);
-        }
-        body.dark-mode .bookmark-list-group-item {
-            background-color: var(--card-bg-dark);
-            border-color: var(--border-color-dark);
-            color: var(--text-color-dark);
-        }
-        body.dark-mode .bookmark-list-group-item:hover {
-            background-color: var(--translation-box-bg-dark);
-        }
-        .bookmark-list-group-item .remove-btn {
-            color: #dc3545;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-left: 10px;
-        }
-        .bookmark-list-group-item .remove-btn:hover {
-            color: #bd2130;
-        }
-
-        /* Audio player specific styling */
-        .audio-controls {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-            gap: 15px; /* Space between play button and info */
-        }
-        .audio-controls button {
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--header-bg-light);
-            cursor: pointer;
-            transition: color 0.2s ease, transform 0.2s ease;
-        }
-        .audio-controls button:hover {
-            color: var(--navbar-bg-light);
-            transform: scale(1.1);
-        }
-        body.dark-mode .audio-controls button {
-            color: var(--text-color-dark);
-        }
-        body.dark-mode .audio-controls button:hover {
-            color: var(--header-bg-dark);
-        }
-        .audio-current-ayah {
-            font-size: 0.9rem;
-            color: var(--text-color-light);
-            transition: color 0.3s ease;
-        }
-        body.dark-mode .audio-current-ayah {
-            color: var(--text-color-dark);
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            .card-header {
+                font-size: 1.1rem;
+            }
+            .text-arabic {
+                font-size: 1.5rem;
+            }
+            .text-translation {
+                font-size: 1rem;
+            }
+            .translation-column {
+                margin-bottom: 20px; /* Add space between columns on small screens */
+            }
         }
     </style>
 </head>
@@ -348,15 +173,13 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <i class="fas fa-quran"></i> Quran Explorer
+                <i class="fas fa-quran"></i> <span data-i18n="app_name">G Quran Explorer</span>
             </a>
-            <div class="ms-auto d-flex align-items-center">
-                <button class="btn btn-link nav-link" id="themeToggle" title="Toggle Dark Mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="btn btn-link nav-link" data-bs-toggle="modal" data-bs-target="#bookmarksModal" title="View Bookmarks">
-                    <i class="fas fa-bookmark"></i>
-                </button>
+            <div class="ms-auto">
+                <select class="form-select form-select-sm" style="width:90px;" id="languageSwitcher">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
             </div>
         </div>
     </nav>
@@ -366,62 +189,54 @@
             <div class="col-lg-8 col-md-10 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <i class="fas fa-book-open"></i> Select Surah and Ayah
+                        <i class="fas fa-book-open"></i> <span data-i18n="select_verse_header">Select Surah and Ayah</span>
                     </div>
                     <div class="card-body">
                         <div class="row g-3 align-items-end">
                             <div class="col-md-4 col-sm-6">
-                                <label for="surahSelect" class="form-label">Surah</label>
+                                <label for="surahSelect" class="form-label" data-i18n="surah_label">Surah</label>
                                 <select class="form-select" id="surahSelect"></select>
                             </div>
                             <div class="col-md-4 col-sm-6">
-                                <label for="ayahSelect" class="form-label">Ayah</label>
+                                <label for="ayahSelect" class="form-label" data-i18n="ayah_label">Ayah</label>
                                 <select class="form-select" id="ayahSelect"></select>
                             </div>
                             <div class="col-md-4 col-sm-12">
-                                <label for="languageSelect" class="form-label">Translation Language</label>
+                                <label for="languageSelect" class="form-label" data-i18n="translation_language_label">Translation Language</label>
                                 <select class="form-select" id="languageSelect">
-                                    <option value="all">All Languages</option>
-                                    <option value="en.sahih">English (Sahih)</option>
-                                    <option value="hi.hindi">Hindi</option>
+                                    <option value="en.sahih" data-i18n="lang_english">English (Sahih)</option>
+                                    <option value="hi.hindi" data-i18n="lang_hindi">Hindi</option>
+                                    <option value="ar.quran-uthmani" data-i18n="lang_arabic">Arabic (Original)</option>
+                                    <option value="all" data-i18n="lang_all">All Languages</option>
                                 </select>
                             </div>
                             <div class="col-12 text-center">
                                 <button class="btn btn-primary mt-3" id="fetchButton">
-                                    <i class="fas fa-search"></i> Fetch Verse
+                                    <i class="fas fa-search"></i> <span data-i18n="fetch_button">Fetch Verse</span>
                                 </button>
-                                <button class="btn btn-primary mt-3 ms-2" id="bookmarkButton">
-                                    <i class="fas fa-bookmark"></i> Bookmark
-                                </button>
-                            </div>
+                                </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="loading-spinner" id="loadingSpinner">
                     <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
+                        <span class="visually-hidden" data-i18n="loading_text">Loading...</span>
                     </div>
-                    <p class="mt-2">Fetching Quranic verse...</p>
+                    <p class="mt-2" data-i18n="fetching_verse_message">Fetching Quranic verse...</p>
                 </div>
 
                 <div class="card mt-4" id="displayCardSingle" style="display: none;">
                     <div class="card-header">
-                        <i class="fas fa-mosque"></i> Quranic Verse
-                        <div class="audio-controls">
-                            <button id="playPauseButtonSingle" title="Play Recitation"><i class="fas fa-play"></i></button>
-                            <span id="audioCurrentAyahSingle" class="audio-current-ayah"></span>
+                        <i class="fas fa-mosque"></i> <span data-i18n="quran_verse_header">Quranic Verse</span>
                         </div>
-                    </div>
                     <div class="card-body">
                         <div class="mb-4 position-relative">
-                            <h5 class="text-center mb-3">Arabic Text</h5>
-                            <button class="btn-icon copy-btn" data-target="arabicTextSingle"><i class="fas fa-copy"></i></button>
+                            <h5 class="text-center mb-3" data-i18n="arabic_text_header">Arabic Text</h5>
                             <div class="text-arabic translation-box" id="arabicTextSingle"></div>
                         </div>
                         <div>
-                            <h5 class="text-center mb-3">Translation</h5>
-                            <button class="btn-icon copy-btn" data-target="translationTextSingle"><i class="fas fa-copy"></i></button>
+                            <h5 class="text-center mb-3" data-i18n="translation_header">Translation</h5>
                             <div class="text-translation translation-box" id="translationTextSingle"></div>
                         </div>
                     </div>
@@ -429,27 +244,20 @@
 
                 <div class="card mt-4" id="displayCardAll" style="display: none;">
                     <div class="card-header">
-                        <i class="fas fa-mosque"></i> Quranic Verse (All Languages)
-                        <div class="audio-controls">
-                            <button id="playPauseButtonAll" title="Play Recitation"><i class="fas fa-play"></i></button>
-                            <span id="audioCurrentAyahAll" class="audio-current-ayah"></span>
+                        <i class="fas fa-mosque"></i> <span data-i18n="quran_verse_all_header">Quranic Verse (All Languages)</span>
                         </div>
-                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 translation-column">
-                                <h5 class="text-center">Arabic</h5>
-                                <button class="btn-icon copy-btn" data-target="arabicTextAll"><i class="fas fa-copy"></i></button>
+                                <h5 class="text-center" data-i18n="arabic_header_col">Arabic</h5>
                                 <div class="text-arabic translation-box" id="arabicTextAll"></div>
                             </div>
                             <div class="col-md-4 translation-column">
-                                <h5 class="text-center">English</h5>
-                                <button class="btn-icon copy-btn" data-target="englishTextAll"><i class="fas fa-copy"></i></button>
+                                <h5 class="text-center" data-i18n="english_header_col">English</h5>
                                 <div class="text-translation translation-box" id="englishTextAll"></div>
                             </div>
                             <div class="col-md-4 translation-column">
-                                <h5 class="text-center">Hindi</h5>
-                                <button class="btn-icon copy-btn" data-target="hindiTextAll"><i class="fas fa-copy"></i></button>
+                                <h5 class="text-center" data-i18n="hindi_header_col">Hindi</h5>
                                 <div class="text-translation translation-box" id="hindiTextAll"></div>
                             </div>
                         </div>
@@ -458,8 +266,9 @@
 
                 <div class="card mt-4">
                     <div class="card-body text-center">
-                        <img src="data:image/jpeg;base64,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" class="img-fluid rounded-3" alt="Islamic Art Placeholder">
-                        <p class="mt-3 text-muted">"Indeed, Allah is with the patient." - Quran 2:153</p>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjpZ8zf68i16Oam-YwwcXcI8tgSBXDt6ptmQ&s" class="img-fluid rounded-3" alt="Islamic Art Placeholder">
+                        
+                        <p class="mt-3 text-muted" data-i18n="quote_text">"Indeed, Allah is with the patient." - Quran 2:153</p>
                     </div>
                 </div>
 
@@ -467,25 +276,8 @@
         </div>
     </div>
 
-    <div class="modal fade" id="bookmarksModal" tabindex="-1" aria-labelledby="bookmarksModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="bookmarksModalLabel"><i class="fas fa-bookmark"></i> Your Bookmarks</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="bookmarksList">
-                    <p class="text-muted text-center" id="noBookmarksMessage">No bookmarks saved yet.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <footer class="footer">
-        <p>&copy; 2025 Quran Explorer. All rights reserved. Powered by <a href="https://alquran.cloud/api" target="_blank">Al Quran Cloud API</a>.</p>
+        <p data-i18n="footer_text">&copy; 2025 Gufaran Mujawar. All rights reserved. Powered by <a href="https://alquran.cloud/api" target="_blank">Al Quran Cloud API</a>.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -496,32 +288,312 @@
         const languageSelect = document.getElementById('languageSelect');
         const fetchButton = document.getElementById('fetchButton');
         const loadingSpinner = document.getElementById('loadingSpinner');
-        const bookmarkButton = document.getElementById('bookmarkButton');
-        const themeToggle = document.getElementById('themeToggle');
 
         // Single language display elements
         const displayCardSingle = document.getElementById('displayCardSingle');
         const arabicTextSingleDiv = document.getElementById('arabicTextSingle');
         const translationTextSingleDiv = document.getElementById('translationTextSingle');
-        const playPauseButtonSingle = document.getElementById('playPauseButtonSingle');
-        const audioCurrentAyahSingleSpan = document.getElementById('audioCurrentAyahSingle');
 
         // All languages display elements
         const displayCardAll = document.getElementById('displayCardAll');
         const arabicTextAllDiv = document.getElementById('arabicTextAll');
         const englishTextAllDiv = document.getElementById('englishTextAll');
         const hindiTextAllDiv = document.getElementById('hindiTextAll');
-        const playPauseButtonAll = document.getElementById('playPauseButtonAll');
-        const audioCurrentAyahAllSpan = document.getElementById('audioCurrentAyahAll');
 
-        // Bookmarks modal elements
-        const bookmarksList = document.getElementById('bookmarksList');
-        const noBookmarksMessage = document.getElementById('noBookmarksMessage');
+        // Language switcher
+        const languageSwitcher = document.getElementById('languageSwitcher');
 
-        // Audio player instance
-        let currentAudio = null;
-        let isPlaying = false;
-        let currentAudioUrl = null;
+        // Translation data
+        const translations = {
+            en: {
+                page_title: "G Quran Explorer",
+                app_name: "G Quran Explorer",
+                select_verse_header: "Select Surah and Ayah",
+                surah_label: "Surah",
+                ayah_label: "Ayah",
+                translation_language_label: "Translation Language",
+                lang_english: "English (Sahih)",
+                lang_hindi: "Hindi",
+                lang_arabic: "Arabic (Original)",
+                lang_all: "All Languages",
+                fetch_button: "Fetch Verse",
+                loading_text: "Loading...",
+                fetching_verse_message: "Fetching Quranic verse...",
+                quran_verse_header: "Quranic Verse",
+                arabic_text_header: "Arabic Text",
+                translation_header: "Translation",
+                quran_verse_all_header: "Quranic Verse (All Languages)",
+                arabic_header_col: "Arabic",
+                english_header_col: "English",
+                hindi_header_col: "Hindi",
+                quote_text: '"Indeed, Allah is with the patient." - Quran 2:153',
+                footer_text: "&copy; 2025 Gufaran Mujawar. All rights reserved. Powered by ",
+                ayah_all_option: "All Ayahs",
+                error_data_structure: "Error: Data structure not as expected.",
+                error_try_again: "Please try again.",
+                error_no_data: "Error: No data found for the selected verse/surah.",
+                error_fetch_failed: "Failed to load Quran data. Please check your internet connection or try again later.",
+                error_general: "Error:"
+            },
+            hi: {
+                page_title: "जी कुरान एक्सप्लोरर",
+                app_name: "जी कुरान एक्सप्लोरर",
+                select_verse_header: "सूरह और आयत चुनें",
+                surah_label: "सूरह",
+                ayah_label: "आयत",
+                translation_language_label: "अनुवाद भाषा",
+                lang_english: "अंग्रेजी (सहीह)",
+                lang_hindi: "हिंदी",
+                lang_arabic: "अरबी (मूल)",
+                lang_all: "सभी भाषाएँ",
+                fetch_button: "आयत प्राप्त करें",
+                loading_text: "लोड हो रहा है...",
+                fetching_verse_message: "कुरान की आयत प्राप्त की जा रही है...",
+                quran_verse_header: "कुरान की आयत",
+                arabic_text_header: "अरबी पाठ",
+                translation_header: "अनुवाद",
+                quran_verse_all_header: "कुरान की आयत (सभी भाषाएँ)",
+                arabic_header_col: "अरबी",
+                english_header_col: "अंग्रेजी",
+                hindi_header_col: "हिंदी",
+                quote_text: '"निश्चय ही अल्लाह सब्र करने वालों के साथ है।" - कुरान 2:153',
+                footer_text: "&copy; 2025 गुफरान मुजावर। सभी अधिकार सुरक्षित। द्वारा संचालित ",
+                ayah_all_option: "सभी आयतें",
+                error_data_structure: "त्रुटि: डेटा संरचना अपेक्षित नहीं है।",
+                error_try_again: "कृपया पुनः प्रयास करें।",
+                error_no_data: "त्रुटि: चयनित आयत/सूरह के लिए कोई डेटा नहीं मिला।",
+                error_fetch_failed: "कुरान डेटा लोड करने में विफल। कृपया अपना इंटरनेट कनेक्शन जांचें या बाद में पुनः प्रयास करें।",
+                error_general: "त्रुटि:"
+            }
+        };
+
+        let currentLanguage = localStorage.getItem('uiLanguage') || 'en'; // Default to English
+
+        /**
+         * Sets the UI language of the website.
+         * @param {string} langCode - The language code ('en' or 'hi').
+         */
+        function setLanguage(langCode) {
+            currentLanguage = langCode;
+            localStorage.setItem('uiLanguage', langCode);
+
+            // Update elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                    // Special handling for HTML content in footer
+                    if (key === 'footer_text') {
+                        element.innerHTML = translations[currentLanguage][key] + '<a href="https://alquran.cloud/api" target="_blank">Al Quran Cloud API</a>.';
+                    } else {
+                        element.textContent = translations[currentLanguage][key];
+                    }
+                }
+            });
+
+            // Update select options that are dynamically populated or have specific text
+            // Update Ayah dropdown "All Ayahs" option
+            const ayahAllOption = ayahSelect.querySelector('option[value="all"]');
+            if (ayahAllOption) {
+                ayahAllOption.textContent = translations[currentLanguage].ayah_all_option;
+            }
+
+            // Update Translation Language dropdown options
+            const langEnglishOption = languageSelect.querySelector('option[value="en.sahih"]');
+            if (langEnglishOption) langEnglishOption.textContent = translations[currentLanguage].lang_english;
+            const langHindiOption = languageSelect.querySelector('option[value="hi.hindi"]');
+            if (langHindiOption) langHindiOption.textContent = translations[currentLanguage].lang_hindi;
+            const langArabicOption = languageSelect.querySelector('option[value="ar.quran-uthmani"]');
+            if (langArabicOption) langArabicOption.textContent = translations[currentLanguage].lang_arabic;
+            const langAllOption = languageSelect.querySelector('option[value="all"]');
+            if (langAllOption) langAllOption.textContent = translations[currentLanguage].lang_all;
+
+            // Set the language switcher to the current language
+            languageSwitcher.value = currentLanguage;
+        }
+
+        /**
+         * Populates the Surah dropdown with all 114 Surahs.
+         */
+        function populateSurahs() {
+            surahSelect.innerHTML = ''; // Clear previous options
+            surahData.forEach((surah, index) => {
+                const option = document.createElement('option');
+                option.value = index + 1; // Surah numbers are 1-indexed
+                option.textContent = `${index + 1}. ${surah.name}`; // Surah names remain in English
+                surahSelect.appendChild(option);
+            });
+        }
+
+        /**
+         * Populates the Ayah dropdown based on the selected Surah.
+         * Adds an "All Ayahs" option, translated.
+         * @param {number} surahNumber - The 1-indexed number of the selected Surah.
+         */
+        function populateAyahs(surahNumber) {
+            ayahSelect.innerHTML = ''; // Clear previous options
+
+            // Add "All Ayahs" option, translated
+            const allOption = document.createElement('option');
+            allOption.value = 'all';
+            allOption.textContent = translations[currentLanguage].ayah_all_option;
+            ayahSelect.appendChild(allOption);
+
+            const ayahsInSurah = surahData[surahNumber - 1].ayahs;
+            for (let i = 1; i <= ayahsInSurah; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = `${translations[currentLanguage].ayah_label} ${i}`;
+                ayahSelect.appendChild(option);
+            }
+        }
+
+        /**
+         * Fetches and displays the Quranic verse(s) and its translation.
+         */
+        async function fetchQuranData() {
+            const selectedSurah = surahSelect.value;
+            const selectedAyah = ayahSelect.value;
+            const selectedLanguage = languageSelect.value;
+
+            // Hide both display cards and show loading spinner
+            displayCardSingle.style.display = 'none';
+            displayCardAll.style.display = 'none';
+            loadingSpinner.style.display = 'block';
+
+            let apiUrl;
+            let editionsToFetch;
+
+            if (selectedLanguage === 'all') {
+                editionsToFetch = 'quran-uthmani,en.sahih,hi.hindi'; // Fetch Arabic, English, Hindi
+            } else {
+                editionsToFetch = `quran-uthmani,${selectedLanguage}`; // Fetch Arabic and selected
+            }
+
+            if (selectedAyah === 'all') {
+                // Fetch entire Surah (with relevant translations)
+                apiUrl = `https://api.alquran.cloud/v1/surah/${selectedSurah}/editions/${editionsToFetch}`;
+            } else {
+                // Fetch specific Ayah (with relevant translations)
+                apiUrl = `https://api.alquran.cloud/v1/ayah/${selectedSurah}:${selectedAyah}/editions/${editionsToFetch}`;
+            }
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error(`${translations[currentLanguage].error_general} HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+
+                // Clear previous content
+                arabicTextSingleDiv.innerHTML = '';
+                translationTextSingleDiv.innerHTML = '';
+                arabicTextAllDiv.innerHTML = '';
+                englishTextAllDiv.innerHTML = '';
+                hindiTextAllDiv.innerHTML = '';
+
+                if (data.data) {
+                    if (selectedLanguage === 'all') {
+                        // Display all three languages
+                        displayCardAll.style.display = 'block';
+                        displayCardSingle.style.display = 'none';
+
+                        let arabicContent = '';
+                        let englishContent = '';
+                        let hindiContent = '';
+
+                        // Find the relevant editions from the data.data array
+                        const arabicEdition = data.data.find(edition => edition.edition.identifier === 'quran-uthmani');
+                        const englishEdition = data.data.find(edition => edition.edition.identifier === 'en.sahih');
+                        const hindiEdition = data.data.find(edition => edition.edition.identifier === 'hi.hindi');
+
+                        if (selectedAyah === 'all') {
+                            // Data for 'all ayahs' will have 'ayahs' array within each edition object
+                            if (arabicEdition && arabicEdition.ayahs) {
+                                arabicEdition.ayahs.forEach(ayah => {
+                                    arabicContent += `${ayah.text} ﴿${ayah.numberInSurah}﴾ <br>`;
+                                });
+                            } else {
+                                arabicContent = translations[currentLanguage].arabic_text_header + ' ' + translations[currentLanguage].error_no_data;
+                            }
+
+                            if (englishEdition && englishEdition.ayahs) {
+                                englishEdition.ayahs.forEach(ayah => {
+                                    englishContent += `${ayah.text} (${ayah.numberInSurah}) <br>`;
+                                });
+                            } else {
+                                englishContent = translations[currentLanguage].english_header_col + ' ' + translations[currentLanguage].error_no_data;
+                            }
+
+                            if (hindiEdition && hindiEdition.ayahs) {
+                                hindiEdition.ayahs.forEach(ayah => {
+                                    hindiContent += `${ayah.text} (${ayah.numberInSurah}) <br>`;
+                                });
+                            } else {
+                                hindiContent = translations[currentLanguage].hindi_header_col + ' ' + translations[currentLanguage].error_no_data;
+                            }
+                        } else {
+                            // Data for 'single ayah' will have 'text' directly on the edition object
+                            arabicContent = arabicEdition ? `${arabicEdition.text} ﴿${arabicEdition.numberInSurah}﴾` : translations[currentLanguage].arabic_text_header + ' ' + translations[currentLanguage].error_no_data;
+                            englishContent = englishEdition ? `${englishEdition.text} (${englishEdition.numberInSurah})` : translations[currentLanguage].english_header_col + ' ' + translations[currentLanguage].error_no_data;
+                            hindiContent = hindiEdition ? `${hindiEdition.text} (${hindiEdition.numberInSurah})` : translations[currentLanguage].hindi_header_col + ' ' + translations[currentLanguage].error_no_data;
+                        }
+
+                        arabicTextAllDiv.innerHTML = arabicContent;
+                        englishTextAllDiv.innerHTML = englishContent;
+                        hindiTextAllDiv.innerHTML = hindiContent;
+
+                    } else {
+                        // Display single language
+                        displayCardSingle.style.display = 'block';
+                        displayCardAll.style.display = 'none';
+
+                        let arabicText = translations[currentLanguage].arabic_text_header + ' ' + translations[currentLanguage].error_no_data;
+                        let translationText = translations[currentLanguage].translation_header + ' ' + translations[currentLanguage].error_no_data;
+
+                        // Find the relevant editions from the data.data array
+                        const arabicEdition = data.data.find(edition => edition.edition.identifier === 'quran-uthmani');
+                        const selectedTranslationEdition = data.data.find(edition => edition.edition.identifier === selectedLanguage);
+
+                        if (selectedAyah === 'all') {
+                            // Data for 'all ayahs' will have 'ayahs' array within each edition object
+                            if (arabicEdition && arabicEdition.ayahs) {
+                                arabicEdition.ayahs.forEach(ayah => {
+                                    arabicText += `${ayah.text} ﴿${ayah.numberInSurah}﴾ <br>`;
+                                });
+                            } else {
+                                arabicText = translations[currentLanguage].arabic_text_header + ' ' + translations[currentLanguage].error_no_data;
+                            }
+
+                            if (selectedTranslationEdition && selectedTranslationEdition.ayahs) {
+                                selectedTranslationEdition.ayahs.forEach(ayah => {
+                                    translationText += `${ayah.text} (${ayah.numberInSurah}) <br>`;
+                                });
+                            } else {
+                                translationText = translations[currentLanguage].translation_header + ' ' + translations[currentLanguage].error_no_data;
+                            }
+                        } else {
+                            // Data for 'single ayah' will have 'text' directly on the edition object
+                            arabicText = arabicEdition ? `${arabicEdition.text} ﴿${arabicEdition.numberInSurah}﴾` : translations[currentLanguage].arabic_text_header + ' ' + translations[currentLanguage].error_no_data;
+                            translationText = selectedTranslationEdition ? `${selectedTranslationEdition.text} (${selectedTranslationEdition.numberInSurah})` : translations[currentLanguage].translation_header + ' ' + translations[currentLanguage].error_no_data;
+                        }
+
+                        arabicTextSingleDiv.innerHTML = arabicText.trim();
+                        translationTextSingleDiv.innerHTML = translationText.trim();
+                    }
+                } else {
+                    arabicTextSingleDiv.textContent = translations[currentLanguage].error_no_data;
+                    translationTextSingleDiv.textContent = translations[currentLanguage].error_try_again;
+                    displayCardSingle.style.display = 'block';
+                }
+            } catch (error) {
+                console.error(translations[currentLanguage].error_general + ' ' + error);
+                arabicTextSingleDiv.textContent = translations[currentLanguage].error_fetch_failed;
+                translationTextSingleDiv.textContent = `${translations[currentLanguage].error_general} ${error.message}`;
+                displayCardSingle.style.display = 'block';
+            } finally {
+                loadingSpinner.style.display = 'none'; // Hide loading spinner
+            }
+        }
 
         // Hardcoded Surah names and Ayah counts for all 114 Surahs
         const surahData = [
@@ -565,488 +637,20 @@
             { name: "Al-Ikhlas", ayahs: 4 }, { name: "Al-Falaq", ayahs: 5 }, { name: "An-Nas", ayahs: 6 }
         ];
 
-        /**
-         * Populates the Surah dropdown with all 114 Surahs.
-         */
-        function populateSurahs() {
-            surahData.forEach((surah, index) => {
-                const option = document.createElement('option');
-                option.value = index + 1; // Surah numbers are 1-indexed
-                option.textContent = `${index + 1}. ${surah.name}`;
-                surahSelect.appendChild(option);
-            });
-        }
-
-        /**
-         * Populates the Ayah dropdown based on the selected Surah.
-         * Adds an "All Ayahs" option.
-         * @param {number} surahNumber - The 1-indexed number of the selected Surah.
-         */
-        function populateAyahs(surahNumber) {
-            ayahSelect.innerHTML = ''; // Clear previous options
-
-            // Add "All Ayahs" option
-            const allOption = document.createElement('option');
-            allOption.value = 'all';
-            allOption.textContent = 'All Ayahs';
-            ayahSelect.appendChild(allOption);
-
-            const ayahsInSurah = surahData[surahNumber - 1].ayahs;
-            for (let i = 1; i <= ayahsInSurah; i++) {
-                const option = document.createElement('option');
-                option.value = i;
-                option.textContent = `Ayah ${i}`;
-                ayahSelect.appendChild(option);
-            }
-        }
-
-        /**
-         * Manages audio playback.
-         * @param {string} audioUrl - URL of the audio file.
-         * @param {number} surahNum - Surah number for display.
-         * @param {number} ayahNum - Ayah number for display.
-         */
-        function playAudio(audioUrl, surahNum, ayahNum) {
-            if (!audioUrl) {
-                alert('Audio not available for this verse.');
-                return;
-            }
-
-            // If a different audio is being played or no audio is playing
-            if (currentAudio && currentAudio.src !== audioUrl) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-                isPlaying = false;
-            }
-
-            if (!currentAudio) {
-                currentAudio = new Audio(audioUrl);
-                currentAudio.addEventListener('ended', () => {
-                    isPlaying = false;
-                    updatePlayButtonIcon();
-                    audioCurrentAyahSingleSpan.textContent = '';
-                    audioCurrentAyahAllSpan.textContent = '';
-                });
-                currentAudio.addEventListener('error', (e) => {
-                    console.error('Audio playback error:', e);
-                    alert('Error playing audio. Please try again.');
-                    isPlaying = false;
-                    updatePlayButtonIcon();
-                });
-            } else if (currentAudio.src !== audioUrl) {
-                currentAudio.src = audioUrl;
-            }
-
-            if (isPlaying) {
-                currentAudio.pause();
-            } else {
-                currentAudio.play().catch(e => console.error("Audio play failed:", e));
-            }
-            isPlaying = !isPlaying;
-            updatePlayButtonIcon();
-            currentAudioUrl = audioUrl;
-
-            // Update current ayah display
-            const surahName = surahData[surahNum - 1].name;
-            const ayahDisplay = ayahNum === 'all' ? `Surah ${surahNum}. ${surahName} (First Ayah)` : `Surah ${surahNum}. ${surahName} - Ayah ${ayahNum}`;
-            audioCurrentAyahSingleSpan.textContent = ayahDisplay;
-            audioCurrentAyahAllSpan.textContent = ayahDisplay;
-        }
-
-        /**
-         * Updates the play/pause button icon.
-         */
-        function updatePlayButtonIcon() {
-            const iconSingle = playPauseButtonSingle.querySelector('i');
-            const iconAll = playPauseButtonAll.querySelector('i');
-            if (isPlaying) {
-                iconSingle.classList.remove('fa-play');
-                iconSingle.classList.add('fa-pause');
-                iconAll.classList.remove('fa-play');
-                iconAll.classList.add('fa-pause');
-            } else {
-                iconSingle.classList.remove('fa-pause');
-                iconSingle.classList.add('fa-play');
-                iconAll.classList.remove('fa-pause');
-                iconAll.classList.add('fa-play');
-            }
-        }
-
-        /**
-         * Fetches and displays the Quranic verse(s) and its translation.
-         */
-        async function fetchQuranData() {
-            const selectedSurah = surahSelect.value;
-            const selectedAyah = ayahSelect.value;
-            const selectedLanguage = languageSelect.value;
-
-            // Hide both display cards and show loading spinner
-            displayCardSingle.style.display = 'none';
-            displayCardAll.style.display = 'none';
-            loadingSpinner.style.display = 'block';
-
-            // Pause audio and reset state
-            if (currentAudio) {
-                currentAudio.pause();
-                isPlaying = false;
-                updatePlayButtonIcon();
-                audioCurrentAyahSingleSpan.textContent = '';
-                audioCurrentAyahAllSpan.textContent = '';
-            }
-
-            let apiUrl;
-            let editionsToFetch;
-
-            if (selectedLanguage === 'all') {
-                editionsToFetch = 'quran-uthmani,en.sahih,hi.hindi'; // Fetch Arabic, English, Hindi
-            } else {
-                editionsToFetch = `quran-uthmani,${selectedLanguage}`; // Fetch Arabic and selected
-            }
-
-            // For audio, we specifically need a recitation edition (e.g., ar.alafasy)
-            // It's generally included with the quran-uthmani edition when fetching by ayah.
-            // If fetching a whole surah for audio, it might require a separate fetch.
-            // For simplicity, we'll aim to get audio from the primary ayah data.
-            const audioReciter = 'ar.alafasy'; // Or any other identifier like ar.abdussamad, ar.minshawi etc.
-
-            if (selectedAyah === 'all') {
-                // Fetch entire Surah (with relevant translations)
-                apiUrl = `https://api.alquran.cloud/v1/surah/${selectedSurah}/editions/${editionsToFetch}`;
-            } else {
-                // Fetch specific Ayah (with relevant translations AND recitation)
-                apiUrl = `https://api.alquran.cloud/v1/ayah/${selectedSurah}:${selectedAyah}/editions/${editionsToFetch},${audioReciter}`;
-            }
-
-            try {
-                const response = await fetch(apiUrl);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-
-                // Clear previous content
-                arabicTextSingleDiv.innerHTML = '';
-                translationTextSingleDiv.innerHTML = '';
-                arabicTextAllDiv.innerHTML = '';
-                englishTextAllDiv.innerHTML = '';
-                hindiTextAllDiv.innerHTML = '';
-
-                let audioUrlToPlay = null;
-                let currentAyahForAudio = selectedAyah;
-
-
-                if (data.data) {
-                    if (selectedLanguage === 'all') {
-                        // Display all three languages
-                        displayCardAll.style.display = 'block';
-                        displayCardSingle.style.display = 'none';
-
-                        let arabicContent = '';
-                        let englishContent = '';
-                        let hindiContent = '';
-
-                        if (selectedAyah === 'all') {
-                            // Handle entire Surah for all languages
-                            const arabicEdition = data.data.find(edition => edition.edition.identifier === 'quran-uthmani');
-                            const englishEdition = data.data.find(edition => edition.edition.identifier === 'en.sahih');
-                            const hindiEdition = data.data.find(edition => edition.edition.identifier === 'hi.hindi');
-
-                            // Find audio for the first ayah of the surah
-                            if (arabicEdition && arabicEdition.ayahs && arabicEdition.ayahs.length > 0) {
-                                arabicEdition.ayahs.forEach(ayah => {
-                                    arabicContent += `${ayah.text} ﴿${ayah.numberInSurah}﴾ <br>`;
-                                });
-                                // Fetch audio URL for the first ayah separately if not already in editionsToFetch
-                                // This is a limitation: api.alquran.cloud /surah endpoint doesn't return audio.
-                                // So we need a separate call for audio if 'all ayahs' is selected.
-                                try {
-                                    const audioResponse = await fetch(`https://api.alquran.cloud/v1/ayah/${selectedSurah}:1/editions/${audioReciter}`);
-                                    const audioData = await audioResponse.json();
-                                    if (audioData.data && audioData.data[0] && audioData.data[0].audio) {
-                                        audioUrlToPlay = audioData.data[0].audio;
-                                        currentAyahForAudio = 1; // Audio will be for the first ayah
-                                    }
-                                } catch (audioError) {
-                                    console.error("Failed to fetch audio for first ayah:", audioError);
-                                }
-                            } else {
-                                arabicContent = 'Arabic text for this Surah not found.';
-                            }
-
-                            if (englishEdition && englishEdition.ayahs) {
-                                englishEdition.ayahs.forEach(ayah => {
-                                    englishContent += `${ayah.text} (${ayah.numberInSurah}) <br>`;
-                                });
-                            } else {
-                                englishContent = 'English translation for this Surah not found.';
-                            }
-
-                            if (hindiEdition && hindiEdition.ayahs) {
-                                hindiEdition.ayahs.forEach(ayah => {
-                                    hindiContent += `${ayah.text} (${ayah.numberInSurah}) <br>`;
-                                });
-                            } else {
-                                hindiContent = 'Hindi translation for this Surah not found.';
-                            }
-
-                        } else {
-                            // Handle single Ayah for all languages
-                            const arabicAyah = data.data.find(edition => edition.edition.identifier === 'quran-uthmani');
-                            const englishAyah = data.data.find(edition => edition.edition.identifier === 'en.sahih');
-                            const hindiAyah = data.data.find(edition => edition.edition.identifier === 'hi.hindi');
-                            const audioAyah = data.data.find(edition => edition.edition.identifier === audioReciter);
-
-                            arabicContent = arabicAyah ? `${arabicAyah.text} ﴿${arabicAyah.numberInSurah}﴾` : 'Arabic text not found.';
-                            englishContent = englishAyah ? `${englishAyah.text} (${englishAyah.numberInSurah})` : 'English translation not found.';
-                            hindiContent = hindiAyah ? `${hindiAyah.text} (${hindiAyah.numberInSurah})` : 'Hindi translation not found.';
-                            audioUrlToPlay = audioAyah ? audioAyah.audio : null;
-                        }
-
-                        arabicTextAllDiv.innerHTML = arabicContent;
-                        englishTextAllDiv.innerHTML = englishContent;
-                        hindiTextAllDiv.innerHTML = hindiContent;
-
-                    } else {
-                        // Display single language
-                        displayCardSingle.style.display = 'block';
-                        displayCardAll.style.display = 'none';
-
-                        if (Array.isArray(data.data)) {
-                            // Single Ayah fetched
-                            let arabicText = 'Arabic text not found.';
-                            let translationText = 'Translation not found.';
-                            let audioAyah = null;
-
-                            data.data.forEach(edition => {
-                                if (edition.edition.identifier === 'quran-uthmani') {
-                                    arabicText = edition.text;
-                                } else if (edition.edition.identifier === selectedLanguage) {
-                                    translationText = edition.text;
-                                } else if (edition.edition.identifier === audioReciter) {
-                                    audioAyah = edition;
-                                }
-                            });
-                            arabicTextSingleDiv.textContent = arabicText;
-                            translationTextSingleDiv.textContent = translationText;
-                            audioUrlToPlay = audioAyah ? audioAyah.audio : null;
-
-                        } else if (data.data.ayahs) {
-                            // All Ayahs of a Surah fetched for single language
-                            let arabicFullText = '';
-                            let translationFullText = '';
-
-                            const arabicEdition = data.data.find(edition => edition.edition.identifier === 'quran-uthmani');
-                            const singleTranslationEdition = data.data.find(edition => edition.edition.identifier === selectedLanguage);
-
-                            if (arabicEdition && arabicEdition.ayahs) {
-                                arabicEdition.ayahs.forEach(ayah => {
-                                    arabicFullText += `${ayah.text} ﴿${ayah.numberInSurah}﴾ <br>`;
-                                });
-                                // For "All Ayahs" display, audio is for the first ayah by default
-                                try {
-                                    const audioResponse = await fetch(`https://api.alquran.cloud/v1/ayah/${selectedSurah}:1/editions/${audioReciter}`);
-                                    const audioData = await audioResponse.json();
-                                    if (audioData.data && audioData.data[0] && audioData.data[0].audio) {
-                                        audioUrlToPlay = audioData.data[0].audio;
-                                        currentAyahForAudio = 1; // Audio will be for the first ayah
-                                    }
-                                } catch (audioError) {
-                                    console.error("Failed to fetch audio for first ayah:", audioError);
-                                }
-                            } else {
-                                arabicFullText = 'Arabic text for this Surah not found.';
-                            }
-
-                            if (singleTranslationEdition && singleTranslationEdition.ayahs) {
-                                singleTranslationEdition.ayahs.forEach(ayah => {
-                                    translationFullText += `${ayah.text} (${ayah.numberInSurah}) <br>`;
-                                });
-                            } else {
-                                translationFullText = 'Translation for this Surah not found.';
-                            }
-                            arabicTextSingleDiv.innerHTML = arabicFullText.trim();
-                            translationTextSingleDiv.innerHTML = translationFullText.trim();
-
-                        } else {
-                            arabicTextSingleDiv.textContent = 'Error: Data structure not as expected.';
-                            translationTextSingleDiv.textContent = 'Please try again.';
-                        }
-                    }
-                } else {
-                    arabicTextSingleDiv.textContent = 'Error: No data found for the selected verse/surah.';
-                    translationTextSingleDiv.textContent = 'Please try again.';
-                    displayCardSingle.style.display = 'block';
-                }
-
-                // Set up audio player button click listeners based on which card is visible
-                const activePlayButton = selectedLanguage === 'all' ? playPauseButtonAll : playPauseButtonSingle;
-                const activeAudioCurrentAyahSpan = selectedLanguage === 'all' ? audioCurrentAyahAllSpan : audioCurrentAyahSingleSpan;
-
-                // Remove existing listeners to prevent duplicates
-                activePlayButton.onclick = null;
-                activePlayButton.onclick = () => playAudio(audioUrlToPlay, selectedSurah, currentAyahForAudio);
-
-
-            } catch (error) {
-                console.error('Error fetching Quran data:', error);
-                arabicTextSingleDiv.textContent = 'Failed to load Quran data. Please check your internet connection or try again later.';
-                translationTextSingleDiv.textContent = `Error: ${error.message}`;
-                displayCardSingle.style.display = 'block';
-            } finally {
-                loadingSpinner.style.display = 'none'; // Hide loading spinner
-            }
-        }
-
-        /**
-         * Dark Mode Toggle
-         */
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            // Save preference to localStorage
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-            } else {
-                localStorage.setItem('theme', 'light');
-                themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
-            }
-        }
-
-        /**
-         * Copy text to clipboard.
-         * @param {string} elementId - ID of the element whose text content needs to be copied.
-         */
-        async function copyText(elementId) {
-            const textToCopy = document.getElementById(elementId).textContent;
-            try {
-                await navigator.clipboard.writeText(textToCopy);
-                alert('Text copied to clipboard!');
-            } catch (err) {
-                console.error('Failed to copy text:', err);
-                alert('Failed to copy text.');
-            }
-        }
-
-        /**
-         * Bookmarks functionality.
-         */
-        function saveBookmark() {
-            const currentSurah = surahSelect.value;
-            const currentAyah = ayahSelect.value;
-            const currentLanguage = languageSelect.value;
-            const surahName = surahData[currentSurah - 1].name;
-            const languageName = languageSelect.options[languageSelect.selectedIndex].textContent;
-
-            const bookmark = {
-                surah: currentSurah,
-                ayah: currentAyah,
-                language: currentLanguage,
-                surahName: surahName,
-                ayahDisplay: currentAyah === 'all' ? 'All Ayahs' : `Ayah ${currentAyah}`,
-                languageName: languageName
-            };
-
-            let bookmarks = JSON.parse(localStorage.getItem('quranBookmarks')) || [];
-
-            // Check for duplicates
-            const isDuplicate = bookmarks.some(b =>
-                b.surah === bookmark.surah &&
-                b.ayah === bookmark.ayah &&
-                b.language === bookmark.language
-            );
-
-            if (!isDuplicate) {
-                bookmarks.push(bookmark);
-                localStorage.setItem('quranBookmarks', JSON.stringify(bookmarks));
-                alert('Verse bookmarked successfully!');
-                loadBookmarks(); // Reload bookmarks in the modal
-            } else {
-                alert('This verse is already bookmarked!');
-            }
-        }
-
-        function loadBookmarks() {
-            const bookmarks = JSON.parse(localStorage.getItem('quranBookmarks')) || [];
-            bookmarksList.innerHTML = ''; // Clear existing list
-
-            if (bookmarks.length === 0) {
-                noBookmarksMessage.style.display = 'block';
-                return;
-            } else {
-                noBookmarksMessage.style.display = 'none';
-            }
-
-            bookmarks.forEach((bookmark, index) => {
-                const li = document.createElement('li');
-                li.className = 'list-group-item d-flex justify-content-between align-items-center bookmark-list-group-item';
-                li.innerHTML = `
-                    <span>
-                        <i class="fas fa-book me-2"></i> ${bookmark.surah}. ${bookmark.surahName} - ${bookmark.ayahDisplay} (${bookmark.languageName})
-                    </span>
-                    <div>
-                        <button class="btn btn-sm btn-link view-bookmark-btn"
-                            data-surah="${bookmark.surah}"
-                            data-ayah="${bookmark.ayah}"
-                            data-lang="${bookmark.language}">
-                            <i class="fas fa-eye text-success"></i>
-                        </button>
-                        <button class="btn btn-sm btn-link remove-bookmark-btn" data-index="${index}">
-                            <i class="fas fa-times-circle text-danger"></i>
-                        </button>
-                    </div>
-                `;
-                bookmarksList.appendChild(li);
-            });
-
-            // Add event listeners for viewing bookmarks
-            bookmarksList.querySelectorAll('.view-bookmark-btn').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    surahSelect.value = event.currentTarget.dataset.surah;
-                    populateAyahs(event.currentTarget.dataset.surah);
-                    ayahSelect.value = event.currentTarget.dataset.ayah;
-                    languageSelect.value = event.currentTarget.dataset.lang;
-                    fetchQuranData();
-                    // Close the modal after viewing
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('bookmarksModal'));
-                    if (modal) modal.hide();
-                });
-            });
-
-            // Add event listeners for removing bookmarks
-            bookmarksList.querySelectorAll('.remove-bookmark-btn').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const indexToRemove = parseInt(event.currentTarget.dataset.index);
-                    removeBookmark(indexToRemove);
-                });
-            });
-        }
-
-        function removeBookmark(indexToRemove) {
-            let bookmarks = JSON.parse(localStorage.getItem('quranBookmarks')) || [];
-            bookmarks.splice(indexToRemove, 1);
-            localStorage.setItem('quranBookmarks', JSON.stringify(bookmarks));
-            loadBookmarks(); // Reload bookmarks after removal
-            alert('Bookmark removed.');
-        }
-
-
         // Event Listeners
         document.addEventListener('DOMContentLoaded', () => {
-            // Load theme preference
-            if (localStorage.getItem('theme') === 'dark') {
-                document.body.classList.add('dark-mode');
-                themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-            }
+            // Initialize language based on localStorage or default to 'en'
+            setLanguage(currentLanguage);
 
             populateSurahs();
-            // Set default Surah 1, Ayah 1, English
+            // Set default Surah 1
             surahSelect.value = 1;
+            // Populate Ayahs for Surah 1 and set default to "All Ayahs"
             populateAyahs(1);
-            ayahSelect.value = 1;
-            languageSelect.value = 'en.sahih';
+            ayahSelect.value = 'all'; // Set default Ayah to 'All Ayahs'
+            // Set default translation language to 'all'
+            languageSelect.value = 'all';
             fetchQuranData(); // Fetch initial Quran data
-
-            loadBookmarks(); // Load bookmarks when page loads
         });
 
         surahSelect.addEventListener('change', () => {
@@ -1067,20 +671,13 @@
         });
 
         fetchButton.addEventListener('click', fetchQuranData);
-        themeToggle.addEventListener('click', toggleDarkMode);
-        bookmarkButton.addEventListener('click', saveBookmark);
 
-        // Event listener for copy buttons
-        document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const targetId = event.currentTarget.dataset.target;
-                copyText(targetId);
-            });
+        languageSwitcher.addEventListener('change', (event) => {
+            setLanguage(event.target.value);
+            // Re-populate Ayah dropdown to update "All Ayahs" text if needed
+            populateAyahs(surahSelect.value);
+            // No need to fetch Quran data again just for UI language switch
         });
-
-        // Event listener for modal show to ensure bookmarks are up-to-date
-        const bookmarksModal = document.getElementById('bookmarksModal');
-        bookmarksModal.addEventListener('show.bs.modal', loadBookmarks);
     </script>
 </body>
 </html>
